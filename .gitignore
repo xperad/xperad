@@ -7,3 +7,18 @@
 
 # Project Files #
 *.iml
+
+.name
+codeStyleSettings.xml
+compiler.xml
+encodings.xml
+misc.xml
+modules.xml
+uiDesigner.xml
+vcs.xml
+workspace.xml
+ant.xml
+
+scope_settings.xml
+
+profiles_settings.xml
