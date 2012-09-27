@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="juggler1"
+          class="com.xperad.aop.Juggler"/>
+
+    <bean id="audience"
+          class="com.xperad.aop.Audience"/>
+
+    <aop:config>
+        <aop:aspect ref="audience"> <!-- audience 빈 참조-->
+
+            <!-- 포인트컷 정의1-->
+            <!--<aop:pointcut id="performance" expression="execution(* com.egrina.spring.Performer.perform(..))"/>-->
+
+            <!-- 포인트컷 정의2-->
+            <aop:pointcut id="performance2" expression="execution(* com.xperad.aop.Performer.perform(..))"/>
+
+            <!-- 공연 전 -->
+            <!--
+                        <aop:before method="takeSeats"
+                                    pointcut-ref="performance"/>
+            -->
+
+            <!-- 공연 전 -->
+            <!--
+                        <aop:before method="turnOffCellPhones"
+                                    pointcut-ref="performance"/>
+            -->
+
+            <!-- 공연 후 -->
+            <!--
+                        <aop:after-returning method="applaud"
+                                             pointcut-ref="performance"/>
+            -->
+
+            <!-- 공연 실패 후 -->
+            <!--
+                        <aop:after-throwing method="demandRefund"
+                                            pointcut-ref="performance"/>
+            -->
+
+            <aop:around method="watchPerformance"
+                        pointcut-ref="performance2"/>
+
+        </aop:aspect>
+    </aop:config>
+
+</beans>
